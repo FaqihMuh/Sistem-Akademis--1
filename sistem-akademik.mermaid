@@ -1,0 +1,122 @@
+classDiagram
+    class User {
+        +String userId
+        +String username
+        +String password
+        +String role
+        +login()
+        +logout()
+    }
+
+    class Admin {
+        +String adminId
+        +manageUsers()
+        +manageSystemSettings()
+    }
+
+    class Mahasiswa {
+        +String nim
+        +String nama
+        +String alamat
+        +Date tanggalLahir
+        +String jurusanId
+        +viewKRS()
+        +viewKHS()
+        +viewJadwal()
+    }
+
+    class Dosen {
+        +String nidn
+        +String nama
+        +String alamat
+        +String spesialisasi
+        +inputNilai()
+        +viewJadwalMengajar()
+    }
+
+    class MataKuliah {
+        +String kodeMK
+        +String namaMK
+        +int sks
+        +String jurusanId
+    }
+
+    class Kelas {
+        +String kelasId
+        +String kodeMK
+        +String dosenNidn
+        +String tahunAjaran
+        +String semester
+        +int kapasitas
+    }
+
+    class JadwalKuliah {
+        +String jadwalId
+        +String kelasId
+        +String hari
+        +String jamMulai
+        +String jamSelesai
+        +String ruang
+    }
+
+    class KRS {
+        +String krsId
+        +String mahasiswaNim
+        +String tahunAjaran
+        +String semester
+        +List~Kelas~ daftarKelas
+        +addKelas()
+        +removeKelas()
+    }
+
+    class KHS {
+        +String khsId
+        +String mahasiswaNim
+        +String tahunAjaran
+        +String semester
+        +float ipkSemester
+        +float ipkKumulatif
+        +List~Nilai~ daftarNilai
+    }
+
+    class Nilai {
+        +String nilaiId
+        +String mahasiswaNim
+        +String kodeMK
+        +String nilaiHuruf
+        +float nilaiAngka
+    }
+    
+    class Jurusan {
+        +String jurusanId
+        +String namaJurusan
+        +String fakultasId
+    }
+
+    class Fakultas {
+        +String fakultasId
+        +String namaFakultas
+    }
+
+    User <|-- Admin
+    User <|-- Mahasiswa
+    User <|-- Dosen
+
+    Fakultas "1" -- "1..*" Jurusan : memiliki
+    Jurusan "1" -- "1..*" Mahasiswa : memiliki
+    Jurusan "1" -- "1..*" Dosen : memiliki
+    Jurusan "1" -- "1..*" MataKuliah : menawarkan
+
+    Mahasiswa "1" -- "1..*" KRS : memiliki
+    Mahasiswa "1" -- "1..*" KHS : memiliki
+    
+    KRS "1" -- "1..*" Kelas : mengambil
+    KHS "1" -- "1..*" Nilai : berisi
+
+    Dosen "1" -- "0..*" Kelas : mengajar
+    MataKuliah "1" -- "1..*" Kelas : dibuka dalam
+    
+    Kelas "1" -- "1" JadwalKuliah : memiliki
+    Nilai "1" -- "1" MataKuliah : untuk
+    Mahasiswa "1" -- "0..*" Nilai : mendapatkan
+
