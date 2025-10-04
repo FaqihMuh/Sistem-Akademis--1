@@ -36,9 +36,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 class
 
-## Class Diagram
-<img width="1547" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-09-27-024620" src="https://github.com/user-attachments/assets/02684604-d7d6-49ad-b4a1-e50c78c76649" />
 
-## Demo
-Youtube : https://www.youtube.com/watch?v=QmEXMVULCiI
+## Demo -1
+YouTube : https://www.youtube.com/watch?v=QmEXMVULCiI
 
+## Demo -2
+YouTube : https://www.youtube.com/watch?v=duyMB3HXTtk
